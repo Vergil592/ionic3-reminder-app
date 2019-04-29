@@ -10,6 +10,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { RappelsPage } from '../pages/rappels/rappels';
+import { SingleRappelPage } from '../pages/single-rappel/single-rappel';
+import { SettingsPage } from '../pages/settings/settings';
+import { RappelsService } from '../services/rappels.service';
+import { OptionsPage } from '../pages/options/options';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RappelsPage,
+    SingleRappelPage,
+    SettingsPage,
+    OptionsPage
   ],
   imports: [
     BrowserModule,
@@ -29,12 +38,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RappelsPage,
+    SingleRappelPage,
+    SettingsPage,
+    OptionsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RappelsService
   ]
 })
 export class AppModule {}

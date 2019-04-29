@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Rappels</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item
+            icon-start
+            *ngFor="let rappel of rappelsList; let i = index"
+            (click)="onLoadRappel(i)">
+      <ion-icon name="power" [color]="rappel.isActif ? 'secondary' : 'danger'"></ion-icon>
+      {{ rappel.name }}
+    </button>
+  </ion-list>
+</ion-content>
+
+
+<ion-footer padding>
+  <p>Bas de page</p>
+</ion-footer>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons>
+      <button ion-button clear (click)="dismissModal()">Fermer</button>
+    </ion-buttons>
+    <ion-title>{{ rappel.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card [ngClass]="{'is-on': !rappel.isActif, 'is-off': rappel.isActif}">
+    <ion-card-header>{{ rappel.name }}</ion-card-header>
+    <ion-card-content>
+      <p *ngFor="let line of rappel.description">{{ line }}</p>
+    </ion-card-content>
+
+    <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+        <ion-list *ngFor="let question of rappel.questions; let i = index">
+          <ion-item>
+            <ion-label>Question</ion-label>
+            <ion-input [name]="question i" [(ngModel)]="rappel.questions[i]"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Réponse</ion-label>
+            <ion-input name="reponse i" [(ngModel)]="rappel.reponses[i]"></ion-input>
+          </ion-item>
+        </ion-list>
+  </form>
+
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button
+            ion-button
+            full
+            [color]="rappel.isActif ? 'primary' : 'secondary'"
+            (click)="onToggleRappel()">
+            <ion-icon icon-start [name]="rappel.isActif ? 'radio-button-on' : 'radio-button-off'"></ion-icon>
+             Activer
+          </button>
+        </ion-col>
+        <ion-col>
+          <button
+            ion-button
+            full
+            color="danger"
+            [disabled]="rappel.isActif"
+            (click)="onToggleRappel()">
+            <ion-icon icon-start name="remove-circle"></ion-icon>
+             Supprimer
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+</ion-content>

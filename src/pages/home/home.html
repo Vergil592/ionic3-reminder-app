@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <button menuToggle ion-button icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reminder App</ion-title>
   </ion-navbar>
+ 
+  <ion-toolbar color="secondary">
+    <ion-title>My favorite Reminders</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <button ion-button (click)="onGoToRappels()">Rappels</button>
 </ion-content>

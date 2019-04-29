@@ -1,5 +1,18 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
-</ion-tabs>
+<ion-header>
+  <ion-navbar color="dark">
+      <ion-buttons start>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+    </ion-buttons>
+    <ion-title>tabs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>coucou</p>
+  <ion-tabs>
+    <ion-tab [root]="rappelsPage" tabTitle="Rappels" tabIcon="bulb"></ion-tab>
+    <ion-tab [root]="settingsPage" tabTitle="Settings" tabIcon="settings"></ion-tab>
+  </ion-tabs>
+</ion-content>

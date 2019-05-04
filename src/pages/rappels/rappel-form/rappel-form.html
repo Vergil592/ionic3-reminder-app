@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nouveau rappel</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="rappelForm">
+    <ion-list>
+      <ion-item-divider>Informations</ion-item-divider>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input placeholder="Rappel" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select placeholder="Type" formControlName="type">
+          <ion-option value="QCM">QCM </ion-option>
+          <ion-option value="Question ouverte">Question ouverte</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item-divider>Description</ion-item-divider>
+      <div formArrayName="description">
+        <ion-item *ngFor="let control of getDescriptionArray().controls; let i = index">
+          <ion-icon item-end
+          name="trash"
+          *ngIf='i != 0'
+          (click)="onRemoveDescription(i)">
+</ion-icon>
+        <ion-input [formControlName]="i" placeholder="{{i+1}}"></ion-input>
+        <ion-icon item-start
+        name="add"
+        (click)="onAddDescription(i)">
+</ion-icon>
+    </ion-item>
+  </div>
+      <ion-item-divider>Quizz</ion-item-divider>
+      <div formArrayName="quizz">
+      <div *ngFor="let control of getQuizzArray().controls; let i = index" [formGroupName]="i">
+          <ion-item>
+<ion-label>Question</ion-label>
+<ion-icon item-end
+name="trash"
+(click)="onRemoveQuizz(i)">
+</ion-icon>
+        <ion-input formControlName="question" placeholder="question {{i+1}}"></ion-input>
+    </ion-item>
+    <ion-item>
+  
+<ion-label>Réponse</ion-label>
+      <ion-input formControlName="reponse" placeholder="réponse {{i+1}}."></ion-input>
+  </ion-item>
+    </div>
+  </div>
+
+    </ion-list>
+    <button ion-button full (click)="onAddQuizz()">Ajouter une question</button>
+  
+    <button ion-button full (click)="onSubmitForm()">Enregistrer</button>
+  </form>
+</ion-content>

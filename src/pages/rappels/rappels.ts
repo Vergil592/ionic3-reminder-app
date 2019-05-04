@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, MenuController } 
 import { SingleRappelPage } from '../single-rappel/single-rappel';
 import { Rappel } from '../../models/rappel';
 import { RappelsService } from '../../services/rappels.service';
+import { RappelFormPage } from './rappel-form/rappel-form';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class RappelsPage {
     //public navParams: NavParams,
     private modalCtrl: ModalController,
     private rappelsService: RappelsService,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private navCtrl: NavController
     ) {
   }
 
@@ -41,6 +43,10 @@ export class RappelsPage {
 
   onToggleMenu() {
     this.menuCtrl.open();
+  }
+
+  onNewRappel() {
+    this.navCtrl.push(RappelFormPage);
   }
 
 }

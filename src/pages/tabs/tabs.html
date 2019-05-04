@@ -1,16 +1,28 @@
 <ion-header>
   <ion-navbar color="dark">
-      <ion-buttons start>
-          <button ion-button icon-only (click)="onToggleMenu()">
-            <ion-icon name="menu"></ion-icon>
+      <ion-buttons>
+          <button start ion-button icon-only (click)="onToggleMenu()">
+              <ion-icon item-start name="menu"></ion-icon>
+              <ion-title start>
+                Super Reminder Titie !
+              </ion-title>
           </button>
     </ion-buttons>
-    <ion-title>tabs</ion-title>
+
+    <ion-buttons end>
+        <button ion-button icon-only>
+            <ion-icon item-end name="search"></ion-icon>
+        </button>
+
+        <button ion-button icon-only>
+            <ion-icon item-end name="more"></ion-icon>
+        </button>
+  </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p>coucou</p>
   <ion-tabs>
     <ion-tab [root]="rappelsPage" tabTitle="Rappels" tabIcon="bulb"></ion-tab>
     <ion-tab [root]="settingsPage" tabTitle="Settings" tabIcon="settings"></ion-tab>

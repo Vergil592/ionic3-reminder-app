@@ -15,6 +15,7 @@ import { SingleRappelPage } from '../pages/single-rappel/single-rappel';
 import { SettingsPage } from '../pages/settings/settings';
 import { RappelsService } from '../services/rappels.service';
 import { OptionsPage } from '../pages/options/options';
+import { RappelFormPage } from '../pages/rappels/rappel-form/rappel-form';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OptionsPage } from '../pages/options/options';
     RappelsPage,
     SingleRappelPage,
     SettingsPage,
-    OptionsPage
+    OptionsPage,
+    RappelFormPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { OptionsPage } from '../pages/options/options';
     RappelsPage,
     SingleRappelPage,
     SettingsPage,
-    OptionsPage
+    OptionsPage,
+    RappelFormPage
   ],
   providers: [
     StatusBar,

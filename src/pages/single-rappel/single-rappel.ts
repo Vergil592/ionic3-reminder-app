@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, MenuController } f
 import { RappelsPage } from '../rappels/rappels';
 import { Rappel } from '../../models/rappel';
 import { RappelsService } from '../../services/rappels.service';
+import { NgForm } from '@angular/forms';
 
 /**
  * Generated class for the SingleRappelPage page.
@@ -53,4 +54,12 @@ export class SingleRappelPage {
     this.menuCtrl.open();
   }
 
+  onRemoveRappel(index: number){
+    this.rappelsService.removeRappel(index);
+  }
+  
+  onSubmitForm(form: NgForm){
+    console.log(form.value);
+    this.dismissModal();
+  }
 }

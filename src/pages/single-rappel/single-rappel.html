@@ -8,23 +8,33 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card [ngClass]="{'is-on': !rappel.isActif, 'is-off': rappel.isActif}">
+  <ion-card [ngClass]="{'is-on': rappel.isActif, 'is-off': !rappel.isActif}">
     <ion-card-header>{{ rappel.name }}</ion-card-header>
     <ion-card-content>
-      <p *ngFor="let line of rappel.description">{{ line }}</p>
+      <p>Type: {{rappel.type}}</p>
+    </ion-card-content>
+    <ion-card-content>
+      <p *ngFor="let line of rappel.description">Description {{ line }}</p>
     </ion-card-content>
 
+    <!-- Formulaire de modification d'un rappel existant-->
     <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
         <ion-list *ngFor="let question of rappel.questions; let i = index">
           <ion-item>
             <ion-label>Question</ion-label>
-            <ion-input [name]="question i" [(ngModel)]="rappel.questions[i]"></ion-input>
+            <ion-input [name]="question" [(ngModel)]="rappel.questions[i]"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Réponse</ion-label>
-            <ion-input name="reponse i" [(ngModel)]="rappel.reponses[i]"></ion-input>
+            <ion-input name="reponse" [(ngModel)]="rappel.reponses[i]"></ion-input>
           </ion-item>
         </ion-list>
+        <button type="submit"
+        ion-button
+        full
+        color="secondary">
+  Enregistrer
+</button>
   </form>
 
   <ion-grid>
@@ -45,7 +55,7 @@
             full
             color="danger"
             [disabled]="rappel.isActif"
-            (click)="onToggleRappel()">
+            (click)="onRemoveRappel()">
             <ion-icon icon-start name="remove-circle"></ion-icon>
              Supprimer
           </button>

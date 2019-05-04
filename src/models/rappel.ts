@@ -9,6 +9,10 @@ export class Rappel {
   
     constructor(name: string) {
       this.name = name;
-      this.isActif = false;
+      this.isActif = true;
+      this.description = [];
+      this.type = "";
+      this.questions = [];
+      this.reponses = [];
     }
   }

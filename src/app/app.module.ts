@@ -16,7 +16,11 @@ import { SettingsPage } from '../pages/settings/settings';
 import { RappelsService } from '../services/rappels.service';
 import { OptionsPage } from '../pages/options/options';
 import { RappelFormPage } from '../pages/rappels/rappel-form/rappel-form';
+import { AuthService } from '../services/Auth.service';
+import { AuthPage } from '../pages/Auth/auth';
 
+import * as firebase from 'firebase';
+import { firebaseConfig } from '../config';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +32,8 @@ import { RappelFormPage } from '../pages/rappels/rappel-form/rappel-form';
     SingleRappelPage,
     SettingsPage,
     OptionsPage,
-    RappelFormPage
+    RappelFormPage,
+    AuthPage
   ],
   imports: [
     BrowserModule,
@@ -45,13 +50,15 @@ import { RappelFormPage } from '../pages/rappels/rappel-form/rappel-form';
     SingleRappelPage,
     SettingsPage,
     OptionsPage,
-    RappelFormPage
+    RappelFormPage,
+    AuthPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RappelsService
+    RappelsService,
+    AuthService
   ]
 })
 export class AppModule {}

@@ -4,6 +4,7 @@ export class Rappel {
     isActif: boolean;
     description: string[];
     type: string;
+    categorie: string;
     questions: string[];
     reponses: string[];
   
@@ -11,7 +12,8 @@ export class Rappel {
       this.name = name;
       this.isActif = true;
       this.description = [];
-      this.type = "";
+      this.categorie =  "Divin";
+      this.type = "Quizz";
       this.questions = [];
       this.reponses = [];
     }

@@ -1,6 +1,9 @@
-import { Rappel } from '../models/rappel'
+import { Rappel } from '../models/rappel.model'
+import { Subject } from 'rxjs/Subject';
 
 export class RappelsService {
+
+  rappel$ = new Subject<Rappel[]>();
 
    rappelList: Rappel[] = [
         {
@@ -8,6 +11,7 @@ export class RappelsService {
           isActif: false,
           description: ["blabldab", "La marche des vertueux"],
           type:"QCM",
+          categorie: "SVT",
           questions: ["Q1", "Q2"],
           reponses: ["R1", "R2"],
         },
@@ -16,6 +20,7 @@ export class RappelsService {
           isActif:false,
           description: ["C'est pas faux", "..."],
           type:"Questions ouvertes",
+          categorie: "Cat1",
           questions: ["Q1", "Q2"],
           reponses: ["R1", "R2"],
         }, 
@@ -24,6 +29,7 @@ export class RappelsService {
           isActif: true,
           description: ["Le gras c'est la vie", "Et tu pousses à en CREVEY !!!"],
           type:"QCM",
+          categorie: "SVT",
           questions: ["Q1", "Q2"],
           reponses: ["R1", "R2"],
         }
@@ -35,5 +41,9 @@ export class RappelsService {
 
       removeRappel(index: number){
         this.rappelList.splice(index);
+      }
+
+      emitRappel(){
+        this.rappel$.next(this.rappelList.slice());
       }
 }

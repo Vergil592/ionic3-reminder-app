@@ -12,22 +12,33 @@
         <ion-label>Nom</ion-label>
         <ion-input placeholder="Rappel" formControlName="name"></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label>Type</ion-label>
         <ion-select placeholder="Type" formControlName="type">
           <ion-option value="QCM">QCM </ion-option>
-          <ion-option value="Question ouverte">Question ouverte</ion-option>
+          <ion-option value="Questions ouverte">Questions ouverte</ion-option>
+          <ion-option value="Texte trous">Texte à trous</ion-option>
         </ion-select>
       </ion-item>
 
-      <ion-item-divider>Description</ion-item-divider>
+      <ion-item>
+        <ion-label>Catégorie</ion-label>
+        <ion-select placeholder="Categorie" formControlName="categorie">
+          <ion-option value="SVT">SVT</ion-option>
+          <ion-option value="Francais">Français</ion-option>
+          <ion-option value="Mathematiques">Mathématiques</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item-divider (click)="onClickType()">Description</ion-item-divider>
       <div formArrayName="description">
         <ion-item *ngFor="let control of getDescriptionArray().controls; let i = index">
           <ion-icon item-end
           name="trash"
           *ngIf='i != 0'
           (click)="onRemoveDescription(i)">
-</ion-icon>
+          </ion-icon>
         <ion-input [formControlName]="i" placeholder="{{i+1}}"></ion-input>
         <ion-icon item-start
         name="add"
@@ -35,7 +46,9 @@
 </ion-icon>
     </ion-item>
   </div>
-      <ion-item-divider>Quizz</ion-item-divider>
+
+  <!-- QUIZZ -->
+      <ion-item-divider *ngIf="">Quizz</ion-item-divider>
       <div formArrayName="quizz">
       <div *ngFor="let control of getQuizzArray().controls; let i = index" [formGroupName]="i">
           <ion-item>

@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //PAGES
 import { TabsPage } from '../pages/tabs/tabs';
-import { OptionsPage } from '../pages/options/options';
 import { AuthPage } from '../pages/Auth/auth';
 
 // FIRE BASE BACK & AUTH
@@ -19,7 +18,6 @@ import { firebaseConfig } from '../config';
 export class MyApp {
 
   tabsPage:any = TabsPage;
-  optionsPage:any = OptionsPage;
   authPage:any = AuthPage;
 
   @ViewChild('content') content: NavController;

@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, MenuController } from 'ionic-angular';
 import { RappelsPage } from '../rappels/rappels';
-import { Rappel } from '../../models/rappel';
+import { Rappel } from '../../models/rappel.model';
 import { RappelsService } from '../../services/rappels.service';
 import { NgForm } from '@angular/forms';
-
-/**
- * Generated class for the SingleRappelPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -30,12 +23,6 @@ export class SingleRappelPage {
     private menuCtrl: MenuController
     ) {
   }
-
-  /*
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SingleRappelPage');
-  }
-*/
 
   ngOnInit(){
     this.index = this.navParams.get('index');

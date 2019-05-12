@@ -1,15 +1,8 @@
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Rappel } from '../../../models/rappel';
+import { Rappel } from '../../../models/rappel.model';
 import { RappelsService } from '../../../services/rappels.service';
-
-/**
- * Generated class for the RappelFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 //@IonicPage()
 @Component({
@@ -39,6 +32,7 @@ export class RappelFormPage {
     this.rappelForm = this.formBuilder.group({
       name:['', Validators.required],
       type:['', Validators.required],
+      categorie:['', Validators.required],
       description: this.formBuilder.array(['']),
       quizz: this.formBuilder.array([
         this.formBuilder.group({
@@ -99,6 +93,10 @@ export class RappelFormPage {
 
     this.rappelService.addRappel(newRappel);
     this.navCtrl.pop();
+  }
+
+  onClickType(){
+    console.log("TEST" +  this.rappelForm.get('type').value + "RIEN");
   }
 
 }

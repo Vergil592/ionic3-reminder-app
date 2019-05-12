@@ -1,9 +1,10 @@
-import { Component, ViewContainerRef, Inject } from '@angular/core';
+import { Component, ViewContainerRef, Inject, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, MenuController } from 'ionic-angular';
 import { SingleRappelPage } from '../single-rappel/single-rappel';
-import { Rappel } from '../../models/rappel';
+import { Rappel } from '../../models/rappel.model';
 import { RappelsService } from '../../services/rappels.service';
 import { RappelFormPage } from './rappel-form/rappel-form';
+import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
@@ -11,9 +12,10 @@ import { RappelFormPage } from './rappel-form/rappel-form';
   templateUrl: 'rappels.html',
 })
 
-export class RappelsPage {
+export class RappelsPage implements OnInit, OnDestroy {
 
   rappelsList: Rappel[];
+  rappelSubscription: Subscription;
 
   constructor(
     //public navCtrl: NavController, 
@@ -25,15 +27,22 @@ export class RappelsPage {
     ) {
   }
 
+  ngOnInit(){
+    this.rappelSubscription = this.rappelsService.rappel$.subscribe(
+      (rappels: Rappel[]) => {
+        this.rappelsList = rappels.slice();
+      }
+    );
+    this.rappelsService.emitRappel();
+  }
+
+  ngOnDestroy(){
+    this.rappelSubscription.unsubscribe();
+  }
+
   ionViewWillEnter(){
     this.rappelsList = this.rappelsService.rappelList.slice() ;
   }
-
-/*
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RappelsPage');
-  }
-*/
 
   onLoadRappel(index: number){
     //this.navCtrl.push(SingleRappelPage, {rappel: rappel});

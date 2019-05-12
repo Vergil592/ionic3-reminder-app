@@ -11,10 +11,10 @@
           <ion-icon name="bulb"></ion-icon>
           Rappels
         </button>
-        <button ion-item icon-start (click)="onNavigate(optionsPage)">
+        <!-- <button ion-item icon-start (click)="onNavigate(settingsPage)">
           <ion-icon name="options"></ion-icon>
           Options
-        </button>
+        </button> -->
         <button ion-item icon-start 
         (click)="onNavigate(authPage, {mode: 'new'})"
         *ngIf='!isAuth'>

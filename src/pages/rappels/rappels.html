@@ -8,7 +8,7 @@
 <ion-content padding>
 
   <ion-fab bottom end>
-    <button ion-fab color="secondary" (click)="onNewRappel()">
+    <button ion-fab color="primary" (click)="onNewRappel()">
       <ion-icon name="add" ></ion-icon>
     </button>
   </ion-fab>
@@ -18,7 +18,7 @@
             icon-start
             *ngFor="let rappel of rappelsList; let i = index"
             (click)="onLoadRappel(i)">
-      <ion-icon name="alarm" [color]="rappel.isActif ? 'secondary' : 'dark'"></ion-icon>
+      <ion-icon name="alarm" [color]="rappel.isActif ? 'primary' : 'red'"></ion-icon>
       {{ rappel.name }}
     </button>
   </ion-list>
